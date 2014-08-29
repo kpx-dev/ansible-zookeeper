@@ -1,0 +1,11 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+    # Tests
+    - name: Check Zookeeper service
+      shell: service zookeeper status | grep "running"
+      register: service_status
+      ignore_errors: yes
+    - fail: msg="ZooKeeper service is not running."
+      when: service_status.stdout == ""
