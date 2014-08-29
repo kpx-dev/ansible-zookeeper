@@ -1,0 +1,49 @@
+---
+- name: Update apt cache
+  apt: update_cache=yes cache_valid_time=3600
+  tags: bootstrap
+
+- name: Apt install required system packages.
+  apt: pkg={{item}} state=installed
+  tags: bootstrap
+  with_items:
+    - openjdk-7-jdk
+
+- file: path=/opt/src state=directory
+- file: path={{zookeeper_dir}} state=directory
+
+- name: Download zookeeper version.
+  get_url: url={{zookeeper_url}} dest=/opt/src/zookeeper-{{zookeeper_version}}.tar.gz
+  tags: bootstrap
+
+- name: Unpack tarball.
+  command: tar zxf /opt/src/zookeeper-{{zookeeper_version}}.tar.gz --strip-components=1 chdir={{zookeeper_dir}} creates={{zookeeper_dir}}/bin
+  tags: bootstrap
+
+- group: name=zookeeper system=yes
+- user: name=zookeeper group=zookeeper system=yes
+
+- name: Change ownership on zookeeper directory.
+  file: path={{zookeeper_dir}} state=directory owner=zookeeper group=zookeeper recurse=yes
+  tags: bootstrap
+
+- name: Create zookeeper data folder.
+  file: path={{zookeeper_data}} state=directory recurse=yes owner=zookeeper group=zookeeper
+  tags: bootstrap
+
+- name: Create zookeeper logs folder.
+  file: path={{zookeeper_logs}} state=directory recurse=yes owner=zookeeper group=zookeeper
+  tags: bootstrap
+
+- name: Upstart script.
+  template: src=zookeeper.conf.j2 dest=/etc/init/zookeeper.conf
+  tags: deploy
+
+- name: Write myid file.
+  template: src=myid.j2 dest={{zookeeper_data}}/myid owner=zookeeper group=zookeeper
+  tags: deploy
+
+- name: Configure zookeeper
+  template: src=zoo.cfg.j2 dest={{zookeeper_dir}}/conf/zoo.cfg owner=zookeeper group=zookeeper
+  notify: Restart zookeeper
+  tags: deploy
