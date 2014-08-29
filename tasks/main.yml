@@ -47,3 +47,7 @@
   template: src=zoo.cfg.j2 dest={{zookeeper_dir}}/conf/zoo.cfg owner=zookeeper group=zookeeper
   notify: Restart zookeeper
   tags: deploy
+
+- name: Start zookeeper
+  service: name=zookeeper state=started enabled=yes
+  tags: deploy
