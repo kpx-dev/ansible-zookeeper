@@ -1,0 +1,4 @@
+# ---
+# dependencies:
+#   # TODO: need Ansible 1.8 http://docs.ansible.com/playbooks_roles.html#role-dependencies
+#   - {role: "git+http://github.com/AnsibleShipyard/ansible-java"}
