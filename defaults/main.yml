@@ -1,11 +1,13 @@
 ---
-zookeeper_playbook_version: "0.0.1"
-zookeeper_version: 3.4.6
-zookeeper_url: http://www.us.apache.org/dist/zookeeper/zookeeper-{{zookeeper_version}}/zookeeper-{{zookeeper_version}}.tar.gz
-zookeeper_dir: /opt/zookeeper-{{zookeeper_version}}
-zookeeper_data: /var/lib/zookeeper
-zookeeper_logs: /var/log/zookeeper
-
-zookeeper_myid: 1
-zookeeper_servers:
-  - { id: 1, host: localhost }
+zookeeper_playbook_version: "0.0.2"
+version: 3.4.6
+apt_cache_timeout: 3600
+client_port: 2181
+init_limit: 5
+sync_limit: 2
+tick_time: 2000
+myid: 1
+data_dir: /var/lib/zookeeper
+log_dir: /var/log/zookeeper
+servers:
+  - {id: 1, host: localhost}
