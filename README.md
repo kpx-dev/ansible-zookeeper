@@ -3,12 +3,24 @@ ansible-zookeeper
 
 ZooKeeper playbook for Ansible
 
-Support open source!
+## Testing
 
-NOTE: This role requires the following roles:
-  - ansible-java
+    vagrant up ubuntu && vagrant ssh ubuntu
+    cd /home/vagrant/roles/ansible-zookeeper
+    bin/test
 
-## How to use this playbook?
+## Example Usage
+
+    ---
+    - hosts: zookeepers
+    sudo: true
+
+    roles:
+    - {
+        role: ansible-zookeeper,
+        version: 3.4.6,
+        myid: 1
+      }
 
 See this sample [playbook](https://github.com/AnsibleShipyard/ansible-galaxy-roles/blob/master/playbook.yml)
 which shows how to use this playbook as well as others. It is part of [ansible-galaxy-roles](https://github.com/AnsibleShipyard/ansible-galaxy-roles) and

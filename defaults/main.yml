@@ -9,5 +9,4 @@ tick_time: 2000
 myid: 1
 data_dir: /var/lib/zookeeper
 log_dir: /var/log/zookeeper
-servers:
-  - {id: 1, host: localhost}
+servers: ""

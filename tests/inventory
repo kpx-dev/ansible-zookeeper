@@ -1,2 +1,5 @@
 [local]
 localhost
+
+[zookeepers]
+localhost zookeeper_id=2
