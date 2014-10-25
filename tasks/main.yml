@@ -46,4 +46,10 @@
 
 - name: Start zookeeper
   service: name=zookeeper state=started enabled=yes
+  when: ansible_os_family == 'Debian' 
+  tags: deploy
+
+- name: Start zookeeper
+  service: name=zookeeper state=started 
+  when: ansible_os_family == 'Redhat' 
   tags: deploy
