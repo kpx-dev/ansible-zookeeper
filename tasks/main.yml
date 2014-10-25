@@ -1,20 +1,16 @@
 ---
-- name: Update apt cache
-  apt: update_cache=yes cache_valid_time=3600
-  tags: bootstrap
-
-- name: Apt install required system packages.
-  apt: pkg={{item}} state=installed
-  tags: bootstrap
-  with_items:
-    - openjdk-7-jdk
-
 - file: path=/opt/src state=directory
 - file: path={{zookeeper_dir}} state=directory
 
 - name: Download zookeeper version.
   get_url: url={{zookeeper_url}} dest=/opt/src/zookeeper-{{zookeeper_version}}.tar.gz
   tags: bootstrap
+
+- name: Install OS Packages
+  yum: name={{ item }} state=present
+  with_items:
+    - libselinux-python
+  when: ansible_os_family == 'RedHat'
 
 - name: Unpack tarball.
   command: tar zxf /opt/src/zookeeper-{{zookeeper_version}}.tar.gz --strip-components=1 chdir={{zookeeper_dir}} creates={{zookeeper_dir}}/bin

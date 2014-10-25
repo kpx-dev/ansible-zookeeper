@@ -6,6 +6,6 @@ zookeeper_dir: /opt/zookeeper-{{zookeeper_version}}
 zookeeper_data: /var/lib/zookeeper
 zookeeper_logs: /var/log/zookeeper
 
-zookeeper_myid: 1
-zookeeper_servers:
-  - { id: 1, host: localhost }
+zookeeper_id: 1
+zookeeper_hosts:
+  - inventory_hostname
