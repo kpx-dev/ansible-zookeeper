@@ -5,7 +5,7 @@ ZooKeeper playbook for Ansible
 
 Support open source!
 
-NOTE: This role requires the following roles:
+NOTE: This role requires java support or the following role defined:
   - ansible-java
 
 ## How to use this playbook?
@@ -19,5 +19,4 @@ serves as a curation (and thus an example) of all our ansible playbooks.
 1. [ansible-mesos](https://github.com/AnsibleShipyard/ansible-mesos)
 1. [ansible-marathon](https://github.com/AnsibleShipyard/ansible-marathon)
 1. [ansible-chronos](https://github.com/AnsibleShipyard/ansible-chronos)
-1. [ansible-mesos-docker](https://github.com/AnsibleShipyard/ansible-mesos-docker)
 1. [ansible-zookeeper](https://github.com/AnsibleShipyard/ansible-zookeeper)
