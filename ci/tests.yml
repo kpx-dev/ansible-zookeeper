@@ -1,0 +1,10 @@
+---
+
+- hosts: localhost
+  connection: local
+  sudo: yes
+  
+  tasks:
+    - shell: echo stat | nc 127.0.0.1 2181
+      register: status
+      failed_when: status.rc != 0
