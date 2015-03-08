@@ -1,6 +1,14 @@
 ansible-zookeeper
 =================
 
+[![Build Status](https://travis-ci.org/AnsibleShipyard/ansible-zookeeper.svg?branch=master)](https://travis-ci.org/AnsibleShipyard/ansible-zookeeper)
+
+
+## Usage
+
+docker pull [ansibleshipyard/ansible-zookeeper](https://registry.hub.docker.com/u/ansibleshipyard/ansible-zookeeper/)
+
+
 ZooKeeper playbook for Ansible
 
 Support open source!
@@ -20,3 +28,4 @@ serves as a curation (and thus an example) of all our ansible playbooks.
 1. [ansible-marathon](https://github.com/AnsibleShipyard/ansible-marathon)
 1. [ansible-chronos](https://github.com/AnsibleShipyard/ansible-chronos)
 1. [ansible-zookeeper](https://github.com/AnsibleShipyard/ansible-zookeeper)
+
