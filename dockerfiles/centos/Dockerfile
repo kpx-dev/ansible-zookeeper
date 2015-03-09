@@ -1,19 +1,19 @@
 # ------------------------------------------------------
 #                       Dockerfile
 # ------------------------------------------------------
-# image:    ansible-zookeeper
+# image:    ansible-zookeeper-centos
 # tag:      latest
-# name:     ansibleshipyard/ansible-zookeeper
+# name:     ansibleshipyard/ansible-zookeeper-centos
 # version:  1.0.0
 # repo:     https://github.com/ansibleshipyard/ansible-zookeeper
-# how-to:   docker build --force-rm -t ansibleshipyard/ansible-zookeeper .
-# requires: ansibleshipyard/ansible-java
+# how-to:   docker build --force-rm -t ansibleshipyard/ansible-zookeeper-centos .
+# requires: centos
 # authors:  jason.giedymin@gmail.com
 # desc: Zookeeper Docker Deployed by Ansible
 # Created via Ansible CI/Docker Playbook Generator
 # ------------------------------------------------------
 
-FROM ansibleshipyard/ansible-java
+FROM ansibleshipyard/ansible-base:centos
 MAINTAINER ansibleshipyard
 
 # -----> Env
