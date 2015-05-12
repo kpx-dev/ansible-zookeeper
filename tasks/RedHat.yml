@@ -33,15 +33,21 @@
 - name: Upstart script.
   template: src=zookeeper.conf.j2 dest=/etc/init/zookeeper.conf
   tags: deploy
+  notify:
+    - Restart zookeeper
 
 - name: Write myid file.
   template: src=myid.j2 dest={{data_dir}}/myid owner=zookeeper group=zookeeper
   tags: deploy
+  notify:
+    - Restart zookeeper
 
 - name: Configure zookeeper
   template: src=zoo.cfg.j2 dest={{ zookeeper_dir }}/conf/zoo.cfg owner=zookeeper group=zookeeper
   tags: deploy
+  notify:
+    - Restart zookeeper
 
 - name: Start zookeeper
-  service: name=zookeeper state=restarted 
+  service: name=zookeeper state=started
   tags: deploy
