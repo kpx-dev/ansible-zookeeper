@@ -13,11 +13,15 @@
 - name: Overwrite myid file.
   template: src=myid.j2 dest=/etc/zookeeper/conf/myid
   tags: deploy
+  notify:
+    - Restart zookeeper
 
 - name: Overwrite default config file
   template: src=zoo.cfg.j2 dest=/etc/zookeeper/conf/zoo.cfg
   tags: deploy
+  notify:
+    - Restart zookeeper
 
-- name: Restart zookeeper
-  service: name=zookeeper state=restarted enabled=yes
+- name: Start zookeeper service
+  service: name=zookeeper state=started enabled=yes
   tags: deploy
