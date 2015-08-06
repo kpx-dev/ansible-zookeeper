@@ -22,7 +22,17 @@ Vagrant.configure("2") do |config|
     c.vm.box = "centos65-x86_64-20140116"
   	c.vm.box_url = "https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box"
   	c.vm.provision "shell" do |s|
-      s.inline = "/bin/true"
+      s.inline = "yum install -y nc java-1.7.0-openjdk-devel ansible"
+		  s.privileged = true
+	  end
+  end
+  
+  # centos 7
+  config.vm.define 'centos7' do |c|
+  	c.vm.network "private_network", ip: "192.168.100.4"
+    c.vm.box = "centos/7"
+  	c.vm.provision "shell" do |s|
+      s.inline = "yum install -y epel-release; yum install -y nc java-1.7.0-openjdk-devel ansible"
 		  s.privileged = true
 	  end
   end
