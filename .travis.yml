@@ -2,9 +2,6 @@
 language: python
 python: "2.7"
 
-env:
-  - SITE=playbook.yml
-
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install curl -y
@@ -17,7 +14,13 @@ install:
 
 script:
   # Check the role/playbook's syntax.
-  - "ansible-playbook -i ci/inventory ci/$SITE --syntax-check"
+  - "ansible-playbook -i ci/inventory ci/playbook.yml --syntax-check"
 
   # Run the ansible ci playbook
   - "ansible-playbook -i ci/inventory ci/playbook.yml --connection=local --sudo -vvvv"
+
+  # Run the ansible hosts list
+  - "ansible-playbook -i ci/inventory ci/hosts_list.yml --connection=local --sudo -vvvv"
+
+  # Run the ansible hosts hash
+  - "ansible-playbook -i ci/inventory ci/hosts_hash.yml --connection=local --sudo -vvvv"
