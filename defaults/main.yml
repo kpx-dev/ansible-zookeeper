@@ -1,6 +1,6 @@
 ---
 ansible_playbook_version: 0.1
-zookeeper_playbook_version: "0.9.1.1"
+zookeeper_playbook_version: "0.9.2"
 zookeeper_version: 3.4.6
 zookeeper_url: http://www.us.apache.org/dist/zookeeper/zookeeper-{{zookeeper_version}}/zookeeper-{{zookeeper_version}}.tar.gz
 
@@ -9,13 +9,11 @@ client_port: 2181
 init_limit: 5
 sync_limit: 2
 tick_time: 2000
-zoo_id: 1
 data_dir: /var/lib/zookeeper
 log_dir: /var/log/zookeeper
 zookeeper_dir: /opt/zookeeper-{{zookeeper_version}}
 
 # List of dict (i.e. {zookeeper_hosts:[{host:,id:},{host:,id:},...]})
 zookeeper_hosts:
-  - host: "{{inventory_hostname}}" # the machine running 
+  - host: "{{inventory_hostname}}" # the machine running
     id: 1
-
