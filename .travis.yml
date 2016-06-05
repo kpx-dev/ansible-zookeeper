@@ -24,3 +24,6 @@ script:
 
   # Run the ansible hosts hash
   - "ansible-playbook -i ci/inventory ci/hosts_hash.yml --connection=local --sudo -vvvv"
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
