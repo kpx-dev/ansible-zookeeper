@@ -26,3 +26,6 @@ zookeeper_tarball_dir: /opt/src
 zookeeper_hosts:
   - host: "{{inventory_hostname}}" # the machine running
     id: 1
+
+# Dict of ENV settings to be written into the (optional) conf/zookeeper-env.sh
+zookeeper_env: {}

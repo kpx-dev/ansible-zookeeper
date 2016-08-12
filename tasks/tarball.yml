@@ -34,7 +34,7 @@
   notify:
     - Restart zookeeper
 
-- name: Configure zookeeper
+- name: Configure zookeeper zoo.cfg
   template: src=zoo.cfg.j2 dest={{ zookeeper_dir }}/conf/zoo.cfg owner=zookeeper group=zookeeper
   tags: deploy
   notify:
