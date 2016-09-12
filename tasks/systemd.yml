@@ -1,10 +1,7 @@
 ---
-- name: Check if systemd exists
-  stat: path=/usr/lib/systemd/system/
-  register: systemd_check
-
 - name: Systemd script.
-  template: src=zookeeper.service.j2 dest=/usr/lib/systemd/system/zookeeper.service
-  when: systemd_check.stat.exists == true
+  template: src=zookeeper.service.j2 dest=/lib/systemd/system/zookeeper.service
+  when: ansible_service_mgr == 'systemd'
   notify:
+    - Reload systemctl daemon
     - Restart zookeeper
