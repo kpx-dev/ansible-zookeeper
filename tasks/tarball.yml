@@ -28,7 +28,7 @@
     - "{{log_dir}}"
 
 - name: Write myid file.
-  template: src=myid.j2 dest={{data_dir}}/myid owner=zookeeper group=zookeeper
+  template: src=myid.j2 dest={{data_dir}}/myid owner=zookeeper group=zookeeper force="{{ zookeeper_force_myid }}"
   tags: deploy
   notify:
     - Restart zookeeper

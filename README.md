@@ -61,6 +61,9 @@ zookeeper_hosts:
 
 # Dict of ENV settings to be written into the (optional) conf/zookeeper-env.sh
 zookeeper_env: {}
+
+# Controls Zookeeper myid generation
+zookeeper_force_myid: yes
 ```
 
 Example Playbook
