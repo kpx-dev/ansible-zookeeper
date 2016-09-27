@@ -96,6 +96,17 @@ Assuming ```zookeepers``` is a [hosts group](http://docs.ansible.com/ansible/int
 server[1:3]
 ```
 
+Custom IP per host group
+
+```
+zookeeper_hosts: "
+    {%- set ips = [] %}
+    {%- for host in groups['zookeepers'] %}
+    {{- ips.append(dict(id=loop.index, host=host, ip=hostvars[host]['ansible_default_ipv4'].address)) }}
+    {%- endfor %}
+    {{- ips -}}"
+```
+
 See this sample [playbook](https://github.com/AnsibleShipyard/ansible-galaxy-roles/blob/master/playbook.yml)
 which shows how to use this playbook as well as others. It is part of [ansible-galaxy-roles](https://github.com/AnsibleShipyard/ansible-galaxy-roles) and
 serves as a curation (and thus an example) of all our ansible playbooks.
