@@ -24,8 +24,8 @@ zookeeper_dir: /opt/zookeeper-{{zookeeper_version}}
 zookeeper_tarball_dir: /opt/src
 
 # Rolling file appender setttings
-rolling_log_file_max_size: 10MB
-max_rolling_log_file_count: 10
+zookeeper_rolling_log_file_max_size: 10MB
+zookeeper_max_rolling_log_file_count: 10
 
 # List of dict (i.e. {zookeeper_hosts:[{host:,id:},{host:,id:},...]})
 zookeeper_hosts:
