@@ -51,7 +51,7 @@ zookeeper_autopurge_snapRetainCount: 10
 
 data_dir: /var/lib/zookeeper
 log_dir: /var/log/zookeeper
-zookeeper_dir: /opt/zookeeper-{{zookeeper_version}}
+zookeeper_dir: /opt/zookeeper-{{zookeeper_version}} # or /usr/share/zookeeper when zookeeper_debian_apt_install is true
 zookeeper_conf_dir: {{zookeeper_dir}} # or /etc/zookeeper when zookeeper_debian_apt_install is true
 zookeeper_tarball_dir: /opt/src
 
