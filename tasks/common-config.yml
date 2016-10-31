@@ -12,6 +12,6 @@
   notify:
     - Restart zookeeper
 
-- name: Start zookeeper service
-  service: name=zookeeper state=started enabled=yes
+- name: Enable zookeeper service
+  service: name=zookeeper enabled=yes
   tags: deploy
