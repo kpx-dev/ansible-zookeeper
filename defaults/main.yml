@@ -8,6 +8,7 @@ zookeeper_url: http://www.us.apache.org/dist/zookeeper/zookeeper-{{zookeeper_ver
 # Note: by default Ubuntu 15.04 and later use systemd (but support switch to upstart)
 zookeeper_debian_systemd_enabled: "{{ ansible_distribution_version|version_compare(15.04, '>=') }}"
 zookeeper_debian_apt_install: false
+zookeeper_debian_apt_repository: ""
 apt_cache_timeout: 3600
 zookeeper_register_path_env: false
 

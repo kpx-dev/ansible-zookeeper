@@ -1,4 +1,8 @@
 ---
+- name: Add custom apt repo (for additional zookeeper versions)
+  apt_repository: repo={{zookeeper_debian_apt_repository}} state=present
+  when: zookeeper_debian_apt_repository
+
 - name: Update apt cache
   apt: update_cache=yes cache_valid_time={{apt_cache_timeout}}
   tags: bootstrap
