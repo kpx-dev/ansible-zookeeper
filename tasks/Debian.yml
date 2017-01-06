@@ -1,7 +1,9 @@
 ---
-- name: Add custom apt repo (for additional zookeeper versions)
-  apt_repository: repo={{zookeeper_debian_apt_repository}} state=present
-  when: zookeeper_debian_apt_repository
+- name: Add optional custom apt repositories (for additional zookeeper versions)
+  apt_repository: repo={{item.repository_url}} state=present
+  when: "{{ ansible_distribution_version|version_compare(item.distro_version, item.version_comparator|default('=')) }}"
+  with_items:
+    - "{{ zookeeper_debian_apt_repositories }}"
 
 - name: Update apt cache
   apt: update_cache=yes cache_valid_time={{apt_cache_timeout}}
