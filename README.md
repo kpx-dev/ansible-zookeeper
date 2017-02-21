@@ -30,8 +30,6 @@ Role Variables
 
 ```yaml
 ---
-ansible_playbook_version: 0.1
-zookeeper_playbook_version: "0.17.0"
 zookeeper_version: 3.4.6
 zookeeper_url: http://www.us.apache.org/dist/zookeeper/zookeeper-{{zookeeper_version}}/zookeeper-{{zookeeper_version}}.tar.gz
 
