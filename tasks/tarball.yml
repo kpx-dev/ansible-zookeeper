@@ -5,9 +5,31 @@
 - name: "Ensure the zookeeper dir exists at {{zookeeper_dir}}"
   file: path={{zookeeper_dir}} state=directory
 
+# If the file exists already, the S3 call can experience errors
+- name: check whether the tarball is downloaded already
+  stat: path={{zookeeper_tarball_dir}}/zookeeper-{{zookeeper_version}}.tar.gz
+  register: zookeeper_tarball_script
+
+- name: Download zookeeper from S3
+  s3:
+    mode: get
+    bucket: "{{zookeeper_archive_s3_bucket}}"
+    object: "{{zookeeper_archive_s3_object}}"
+    dest: "{{zookeeper_tarball_dir}}/zookeeper-{{zookeeper_version}}.tar.gz"
+  register: zookeeper_s3_tarball_downloaded
+  tags: bootstrap
+  when: >
+    zookeeper_archive_s3_bucket is defined and
+    zookeeper_archive_s3_object is defined and
+    not zookeeper_tarball_script.stat.exists
+
 - name: Download zookeeper version.
   get_url: url={{zookeeper_url}} dest={{zookeeper_tarball_dir}}/zookeeper-{{zookeeper_version}}.tar.gz
   tags: bootstrap
+  register: zookeeper_tarball_downloaded
+  when: >
+    zookeeper_archive_s3_bucket is not defined or
+    zookeeper_archive_s3_object is not defined
 
 - name: Unpack tarball.
   command: tar zxf {{zookeeper_tarball_dir}}/zookeeper-{{zookeeper_version}}.tar.gz --strip-components=1 chdir={{zookeeper_dir}} creates={{zookeeper_dir}}/bin
