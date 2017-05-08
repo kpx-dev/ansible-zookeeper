@@ -13,5 +13,7 @@ umask 007
 kill timeout 300
 
 script
-    exec sudo -u zookeeper -g zookeeper {{zookeeper_dir}}/bin/zkServer.sh start-foreground > /var/log/zookeeper/init-zookeeper.log 2>&1
+    # https://superuser.com/questions/213416/running-upstart-jobs-as-unprivileged-users
+    exec su -s /bin/sh -c 'exec "$0" "$@" &>>/var/log/zookeeper/init-zookeeper.log' zookeeper -- \
+      {{zookeeper_dir}}/bin/zkServer.sh start-foreground
 end script
