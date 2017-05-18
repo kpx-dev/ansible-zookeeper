@@ -82,6 +82,20 @@ Example Playbook
     - role: AnsibleShipyard.ansible-zookeeper
 ```
 
+Example Retrieving Tarball From S3
+----------------------------------
+
+```yaml
+- name: Installing ZooKeeper
+  hosts: all
+  sudo: yes
+  vars:
+    zookeeper_archive_s3_bucket: my-s3-bucket
+    zookeeper_archive_s3_object: my/s3/directory/zookeeper-{{zookeeper_version}}.tar.gz
+  roles:
+    - role: AnsibleShipyard.ansible-zookeeper
+```
+
 Cluster Example
 ----------------
 
