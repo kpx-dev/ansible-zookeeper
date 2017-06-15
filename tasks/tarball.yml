@@ -32,7 +32,7 @@
     zookeeper_archive_s3_object is not defined
 
 - name: Unpack tarball.
-  command: tar zxf {{zookeeper_tarball_dir}}/zookeeper-{{zookeeper_version}}.tar.gz --strip-components=1 chdir={{zookeeper_dir}} creates={{zookeeper_dir}}/bin
+  command: tar xf {{zookeeper_tarball_dir}}/zookeeper-{{zookeeper_version}}.tar.gz --strip-components=1 chdir={{zookeeper_dir}} creates={{zookeeper_dir}}/bin
   tags: bootstrap
 
 - group: name=zookeeper system=yes
