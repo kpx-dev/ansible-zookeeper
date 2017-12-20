@@ -14,6 +14,6 @@ kill timeout 300
 
 script
     # https://superuser.com/questions/213416/running-upstart-jobs-as-unprivileged-users
-    exec su -s /bin/sh -c 'exec "$0" "$@" &>>/var/log/zookeeper/init-zookeeper.log' zookeeper -- \
+    exec su -s /bin/sh -c 'exec "$0" "$@" &>>{{ log_dir }}/init-zookeeper.log' zookeeper -- \
       {{zookeeper_dir}}/bin/zkServer.sh start-foreground
 end script
