@@ -4,7 +4,7 @@ dataLogDir={{ log_dir }}
 clientPort={{ client_port }}
 initLimit={{ init_limit }}
 syncLimit={{ sync_limit }}
-
+maxClientCnxns={{ zookeeper_max_client_connections }}
 {% if zookeeper_autopurge_purgeInterval > 0 %}
 autopurge.purgeInterval={{ zookeeper_autopurge_purgeInterval }}
 autopurge.snapRetainCount={{ zookeeper_autopurge_snapRetainCount }}
