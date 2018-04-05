@@ -60,9 +60,10 @@ zookeeper_dir: /opt/zookeeper-{{zookeeper_version}} # or /usr/share/zookeeper wh
 zookeeper_conf_dir: {{zookeeper_dir}} # or /etc/zookeeper when zookeeper_debian_apt_install is true
 zookeeper_tarball_dir: /opt/src
 
+zookeeper_hosts_hostname: "{{inventory_hostname}}"
 # List of dict (i.e. {zookeeper_hosts:[{host:,id:},{host:,id:},...]})
 zookeeper_hosts:
-  - host: "{{inventory_hostname}}" # the machine running
+  - host: "{{zookeeper_hosts_hostname}}" # the machine running
     id: 1
 
 # Dict of ENV settings to be written into the (optional) conf/zookeeper-env.sh

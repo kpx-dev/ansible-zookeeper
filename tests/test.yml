@@ -23,7 +23,7 @@
   roles:
     - role: role_under_test
       zookeeper_hosts:
-        - host: "{{inventory_hostname}}" # the machine running
+        - host: "{{zookeeper_hosts_hostname}}" # the machine running
           id: 2
 
 - hosts: localhost
@@ -45,7 +45,7 @@
   roles:
     - role: role_under_test
       zookeeper_hosts:
-        - "{{inventory_hostname}}"
+        - "{{zookeeper_hosts_hostname}}"
 
 - hosts: localhost
   connection: local
@@ -68,7 +68,7 @@
       zookeeper_version: 3.4.11
       zookeeper_dir: /opt/zookeeper-{{zookeeper_version}}
       zookeeper_hosts:
-        - host: "{{inventory_hostname}}" # the machine running
+        - host: "{{zookeeper_hosts_hostname}}" # the machine running
           ip: '192.168.0.1'
           id: 2
 
