@@ -30,7 +30,7 @@ Role Variables
 
 ```yaml
 ---
-zookeeper_version: 3.4.11
+zookeeper_version: 3.4.12
 zookeeper_url: http://www.us.apache.org/dist/zookeeper/zookeeper-{{zookeeper_version}}/zookeeper-{{zookeeper_version}}.tar.gz
 
 # Flag that selects if systemd or upstart will be used for the init service:
